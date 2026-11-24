@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Zeeshan Anjum – AI/ML Engineer and Full-Stack Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#06141B; --text:#CCD0CF; --muted:#9BA8AB;
+  --glass:rgba(17,33,45,.55); --glass2:rgba(37,55,69,.72); --edge:rgba(204,208,207,.16);
+  --accent:#9BA8AB; --accent2:#4A5C6A;
+  color-scheme:dark; box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#06141B}}
+:root[data-theme="dark"]{--bg:#06141B}
+html{scroll-padding-top:96px;scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:400 17px/1.7 "Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3,.logo,.mono{font-family:"Bricolage Grotesque","Instrument Sans",system-ui,sans-serif}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:8px}
+
+/* living NDVI field behind everything */
+#field{position:fixed;inset:0;width:100%;height:100%;z-index:-2;display:block}
+.veil{position:fixed;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(90deg,rgba(6,20,27,.82) 0%,rgba(6,20,27,.45) 45%,rgba(6,20,27,.2) 100%)}
+
+.glass{
+  background:var(--glass);border:1px solid var(--edge);border-radius:22px;
+  -webkit-backdrop-filter:blur(18px) saturate(140%);backdrop-filter:blur(18px) saturate(140%);
+  box-shadow:0 18px 50px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.2);
+}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.glass{background:rgba(17,33,45,.95)}}
+.wrap{max-width:1120px;margin:0 auto;padding:0 clamp(16px,4vw,32px)}
+
+/* nav */
+header{position:sticky;top:calc(env(safe-area-inset-top,0px) + 14px);z-index:10;margin-top:14px}
+.bar{display:flex;align-items:center;justify-content:space-between;padding:10px 12px 10px 26px;border-radius:999px}
+.logo{font-weight:800;letter-spacing:-.01em;font-size:18px}
+.bar nav{display:flex;gap:6px;font-size:15px}
+.bar nav a{padding:8px 18px;border-radius:999px;color:var(--muted)}
+.bar nav a:hover{background:rgba(255,255,255,.09);color:var(--text)}
+.pill{padding:9px 20px;border-radius:999px;background:linear-gradient(135deg,var(--accent),#CCD0CF);font-weight:600;font-size:15px;color:#06141B}
+
+/* hero */
+.hero{min-height:calc(100svh - 90px);display:flex;align-items:center;padding:clamp(40px,8vw,96px) 0}
+.hero .wrap{width:100%;display:grid;grid-template-columns:1.5fr 1fr;gap:clamp(24px,5vw,64px);align-items:end}
+h1{font-size:clamp(52px,10.5vw,132px);font-weight:800;line-height:.95;letter-spacing:-.045em;margin:0 0 18px;text-shadow:0 4px 30px rgba(0,0,0,.45)}
+h1 span{display:block;color:var(--accent)}
+.role{font-size:clamp(18px,2.3vw,23px);font-weight:600;margin:0 0 16px}
+.sum{color:#c5d8cb;max-width:33em;margin:0 0 30px;text-shadow:0 2px 14px rgba(0,0,0,.6)}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-block;padding:13px 24px;border-radius:999px;font-weight:600;font-size:15.5px;background:var(--glass);border:1px solid var(--edge);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);box-shadow:inset 0 1px 0 rgba(255,255,255,.2);transition:background .2s,transform .2s}
+.btn:hover{background:var(--glass2);transform:translateY(-2px)}
+.btn.main{background:linear-gradient(135deg,var(--accent),#CCD0CF);border-color:transparent;color:#06141B}
+.btn.main:hover{background:linear-gradient(135deg,#b0bbbd,#e4e7e6)}
+.id{padding:28px}
+.hint{font-size:14px;color:var(--muted);margin:0 0 18px;padding-bottom:18px;border-bottom:1px solid var(--edge)}
+.ramp{display:block;height:8px;border-radius:4px;margin-top:10px;background:linear-gradient(90deg,#11212D,#253745,#4A5C6A,#CCD0CF)}
+.ramp+small{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-top:4px}
+.id dl{margin:0;display:grid;gap:14px;font-size:15px}
+.id dt{color:var(--muted);font-size:13px}
+.id dd{margin:0}
+
+/* sections */
+section{padding:clamp(48px,8vw,90px) 0}
+.head{margin-bottom:36px;max-width:38em}
+h2.t{font-size:clamp(32px,5vw,50px);font-weight:800;letter-spacing:-.035em;line-height:1.05;margin:0 0 12px}
+.head p{color:var(--muted);margin:0}
+
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.proj{position:relative;display:flex;flex-direction:column;padding:30px 30px 30px 40px;overflow:hidden;transition:transform .25s,background .25s,border-color .25s}
+.proj::before{content:"";position:absolute;left:0;top:0;bottom:0;width:9px;background:linear-gradient(180deg,var(--c1),var(--c2));transition:width .25s}
+.proj:hover{transform:translateY(-4px);background:var(--glass2);border-color:rgba(204,208,207,.4)}
+.proj:hover::before{width:16px}
+.proj h3{font-size:23px;font-weight:500;letter-spacing:-.02em;margin:0 0 10px;line-height:1.25}
+.proj p{color:var(--muted);margin:0 0 20px;font-size:15.5px;flex:1}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+.chips span{font-size:13px;padding:4px 13px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12)}
+.lk{font-weight:600;font-size:15px;color:var(--accent)}
+.lk::after{content:" \2192"}
+.wide{grid-column:1/-1}
+
+.cols{display:grid;grid-template-columns:1fr 1.2fr;gap:20px}
+.about,.skills{padding:clamp(26px,4vw,44px)}
+.about p{color:var(--muted);margin:0 0 16px}
+.skills{display:grid;grid-template-columns:1fr 1fr;gap:26px 30px}
+.skills>div{border-left:3px solid var(--accent);padding-left:14px}
+.skills h3{font-size:17px;font-weight:500;margin:0 0 6px}
+.skills ul{list-style:none;margin:0;padding:0;color:var(--muted);font-size:15.5px}
+.skills li{padding:1px 0}
+
+.contact .box{text-align:center;padding:clamp(36px,6vw,72px) 24px}
+.contact .head{margin:0 auto 30px}
+.contact .cta{justify-content:center}
+footer{padding:24px 0 40px;text-align:center;color:var(--muted);font-size:14px}
+
+@media (max-width:860px){
+  .hero{align-items:flex-end}
+  .hero .wrap,.cols{grid-template-columns:1fr}
+  .grid{grid-template-columns:1fr}
+  .bar nav{display:none}
+  .bar{padding-left:20px}
+  .veil{background:linear-gradient(0deg,rgba(6,20,27,.82) 0%,rgba(6,20,27,.55) 60%,rgba(6,20,27,.3) 100%)}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn,.proj,.proj::before{transition:none}}
+</style>
+</head>
+<body>
+
+<canvas id="field" aria-hidden="true"></canvas>
+<div class="veil"></div>
+
+<header class="wrap">
+  <div class="bar glass">
+    <a class="logo" href="#top">Zeeshan Anjum</a>
+    <nav aria-label="Primary">
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="pill" href="#contact">Get in touch</a>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <div>
+        <h1>Zeeshan<span>Anjum</span></h1>
+        <p class="role">AI/ML Engineer and Full-Stack Developer</p>
+        <p class="sum">I build machine learning systems that read soil, weather and satellite data, and the web applications that put them in people’s hands.</p>
+        <div class="cta">
+          <a class="btn main" href="#work">View my work</a>
+          <a class="btn" href="https://github.com/Zeger433" target="_blank" rel="noopener">GitHub</a>
+          <a class="btn" href="https://www.linkedin.com/in/zeeshan-anjum-062b73263/" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+      <aside class="id glass" aria-label="Profile summary">
+        <p class="hint">Move your cursor over the background to light up the grid, like a satellite index map coming into focus.
+          <i class="ramp"></i><small><span>low</span><span>high</span></small></p>
+        <dl>
+          <div><dt>Focus</dt><dd>Precision agriculture, land health, flood risk</dd></div>
+          <div><dt>Core stack</dt><dd>Python, TypeScript, Next.js, FastAPI</dd></div>
+          <div><dt>Location</dt><dd>Punjab, Pakistan</dd></div>
+          <div><dt>Public repositories</dt><dd>17 on GitHub</dd></div>
+        </dl>
+      </aside>
+    </div>
+  </div>
+
+  <section id="work">
+    <div class="wrap">
+      <div class="head">
+        <h2 class="t">Selected work</h2>
+        <p>Applied machine learning and full-stack projects, built end to end.</p>
+      </div>
+      <div class="grid">
+
+        <article class="proj glass wide" style="--c1:#CCD0CF;--c2:#9BA8AB">
+          <h3>AgroSmart AI</h3>
+          <p>A production-grade machine learning platform for precision agriculture. It recommends the best crop to grow and predicts the expected yield from soil chemistry and climate inputs.</p>
+          <div class="chips"><span>Python</span><span>Machine learning</span><span>Crop recommendation</span><span>Yield prediction</span></div>
+          <a class="lk" href="https://github.com/Zeger433/AgroSmart-AI" target="_blank" rel="noopener">View repository</a>
+        </article>
+
+        <article class="proj glass" style="--c1:#9BA8AB;--c2:#4A5C6A">
+          <h3>Land Degradation and Biodiversity Monitoring</h3>
+          <p>An end-to-end system that monitors land health across Punjab using satellite NDVI, climate data and machine learning, with a six-month degradation forecast and conservation recommendations.</p>
+          <div class="chips"><span>Python</span><span>Satellite NDVI</span><span>Forecasting</span></div>
+          <a class="lk" href="https://github.com/Zeger433/AI-Based-Land-Degradation-Biodiversity-Monitoring-System" target="_blank" rel="noopener">View repository</a>
+        </article>
+
+        <article class="proj glass" style="--c1:#CCD0CF;--c2:#4A5C6A">
+          <h3>HydroAI Weather Forecast</h3>
+          <p>A Streamlit application that combines live OpenWeather data with historical records to classify rain, forecast temperature and humidity, surface outliers and assess flood risk.</p>
+          <div class="chips"><span>Python</span><span>Streamlit</span><span>Flood risk</span></div>
+          <a class="lk" href="https://github.com/Zeger433/HydroAi-Forcast-Weather" target="_blank" rel="noopener">View repository</a>
+        </article>
+
+        <article class="proj glass" style="--c1:#4A5C6A;--c2:#253745">
+          <h3>UAF-LMS Student Engagement Portal</h3>
+          <p>A learning management system for the University of Agriculture Faisalabad, with secure access, engagement tracking and student performance insights.</p>
+          <div class="chips"><span>TypeScript</span><span>Next.js</span><span>Express</span><span>PostgreSQL</span><span>Prisma</span></div>
+          <a class="lk" href="https://github.com/Zeger433/AI-Enhanced-Student-Engagement-and-Performance-Tracking-Portal" target="_blank" rel="noopener">View repository</a>
+        </article>
+
+        <article class="proj glass" style="--c1:#9BA8AB;--c2:#253745">
+          <h3>PDF Question-Answering Chatbot</h3>
+          <p>A retrieval-augmented chatbot: upload a PDF and ask questions about it. A Streamlit interface works with a FastAPI backend that processes the document and retrieves relevant passages.</p>
+          <div class="chips"><span>Python</span><span>RAG</span><span>FastAPI</span><span>Streamlit</span></div>
+          <a class="lk" href="https://github.com/Zeger433/Chatbot-RAG" target="_blank" rel="noopener">View repository</a>
+        </article>
+
+        <article class="proj glass wide" style="--c1:#9BA8AB;--c2:#CCD0CF">
+          <h3>News Website</h3>
+          <p>A responsive news website with coverage categories, mission and vision, impact statistics, team profiles and interactive FAQs, assembled from reusable React components.</p>
+          <div class="chips"><span>TypeScript</span><span>Next.js</span><span>React</span></div>
+          <a class="lk" href="https://github.com/Zeger433/News-Website-Next.js" target="_blank" rel="noopener">View repository</a>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap cols">
+      <div class="about glass">
+        <h2 class="t">About</h2>
+        <p>I work on problems where data meets the ground: which crop to plant, where land is losing health, and when heavy rain becomes a flood risk.</p>
+        <p>I pair the modelling with full-stack development, so results reach users through portals, dashboards and chat interfaces rather than staying in notebooks.</p>
+      </div>
+      <div class="skills glass">
+        <div><h3>Machine learning</h3><ul><li>Prediction and forecasting</li><li>Retrieval-augmented generation</li><li>Satellite and climate data</li></ul></div>
+        <div><h3>Languages</h3><ul><li>Python</li><li>TypeScript</li></ul></div>
+        <div><h3>Web</h3><ul><li>Next.js and React</li><li>Express</li><li>FastAPI</li><li>Streamlit</li></ul></div>
+        <div><h3>Data</h3><ul><li>PostgreSQL</li><li>Prisma</li><li>OpenWeather API</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="wrap">
+      <div class="box glass">
+        <div class="head">
+          <h2 class="t">Let’s talk</h2>
+          <p>I’m happy to discuss projects, collaborations and opportunities. The quickest way to reach me is LinkedIn.</p>
+        </div>
+        <div class="cta">
+          <a class="btn main" href="https://www.linkedin.com/in/zeeshan-anjum-062b73263/" target="_blank" rel="noopener">Message on LinkedIn</a>
+          <a class="btn" href="https://github.com/Zeger433?tab=repositories" target="_blank" rel="noopener">Browse all repositories</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>© 2026 Zeeshan Anjum</footer>
+
+<script>
+(function(){
+  var cv=document.getElementById('field'),cx=cv.getContext('2d');
+  var S=24,W,H,cols,rows,val,mx=-999,my=-999,t=0;
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var ramp=[[17,33,45],[37,55,69],[74,92,106],[204,208,207]];
+  function col(v){
+    v=Math.max(0,Math.min(.999,v))*3;var i=v|0,f=v-i,a=ramp[i],b=ramp[i+1];
+    return 'rgb('+((a[0]+(b[0]-a[0])*f)|0)+','+((a[1]+(b[1]-a[1])*f)|0)+','+((a[2]+(b[2]-a[2])*f)|0)+')';
+  }
+  function base(x,y){return .22+.2*Math.sin(x*.19+1)+.14*Math.sin(y*.27+x*.07)+.1*Math.sin((x+y)*.11)}
+  function size(){
+    var d=Math.min(devicePixelRatio||1,2);
+    W=innerWidth;H=innerHeight;cv.width=W*d;cv.height=H*d;cx.setTransform(d,0,0,d,0,0);
+    cols=Math.ceil(W/S);rows=Math.ceil(H/S);val=new Float32Array(cols*rows);
+    for(var y=0;y<rows;y++)for(var x=0;x<cols;x++)val[y*cols+x]=base(x,y);
+    draw();
+  }
+  function draw(){
+    cx.clearRect(0,0,W,H);
+    for(var y=0;y<rows;y++)for(var x=0;x<cols;x++){
+      cx.fillStyle=col(val[y*cols+x]);cx.fillRect(x*S+1,y*S+1,S-2,S-2);
+    }
+  }
+  function step(){
+    t+=.012;var R=160;
+    for(var y=0;y<rows;y++)for(var x=0;x<cols;x++){
+      var dx=x*S+S/2-mx,dy=y*S+S/2-my,d=Math.sqrt(dx*dx+dy*dy),i=y*cols+x;
+      var boost=d<R?(1-d/R)*.9:0,goal=base(x,y)+.04*Math.sin(t+x*.3+y*.2)+boost;
+      val[i]+=(goal-val[i])*(boost>0?.25:.015);
+    }
+    draw();requestAnimationFrame(step);
+  }
+  function move(e){var p=e.touches?e.touches[0]:e;mx=p.clientX;my=p.clientY}
+  addEventListener('resize',size);size();
+  if(!reduce){
+    addEventListener('mousemove',move);addEventListener('touchmove',move,{passive:true});
+    var sx=-100,sw=setInterval(function(){sx+=W/70;mx=sx;my=H*.42+Math.sin(sx*.01)*H*.18;if(sx>W+100){clearInterval(sw);mx=my=-999}},16);
+    requestAnimationFrame(step);
+  }
+})();
+</script>
+</body>
+</html>
